@@ -94,7 +94,7 @@ public class ArrayDeque<T> implements Deque<T>{
         }
         checkDiv(items);
 
-        addOne(nextFirst);
+        nextFirst = addOne(nextFirst);
         T t = items[nextFirst];
         items[nextFirst] = null;
         size--;
@@ -108,7 +108,7 @@ public class ArrayDeque<T> implements Deque<T>{
         }
         checkDiv(items);
 
-        minusOne(nextLast);
+        nextLast = minusOne(nextLast);
         T t = items[nextLast];
         items[nextLast] = null;
         size--;
