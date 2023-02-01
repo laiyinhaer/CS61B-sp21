@@ -3,10 +3,10 @@ import java.util.Iterator;
 import org.apache.commons.collections.bag.SynchronizedSortedBag;
 
 public class ArrayDeque<T> implements Deque<T>{
-    private T[] items;
-    private int size;
-    private int nextFirst;
-    private int nextLast;
+    protected T[] items;
+    protected int size;
+    protected int nextFirst;
+    protected int nextLast;
 
     public ArrayDeque() {
         items = (T[]) new Object[8];
@@ -15,15 +15,15 @@ public class ArrayDeque<T> implements Deque<T>{
         nextLast = 1;
     }
 
-    private int addOne(int index) {
+    protected int addOne(int index) {
         return (index + 1) % items.length;
     }
 
-    private int minusOne(int index) {
+    protected int minusOne(int index) {
         return (index - 1 + items.length) % items.length;
     }
 
-    private void resize(int capacity) {
+    protected void resize(int capacity) {
         T[] a = (T[]) new Object[capacity];
 
         int index = addOne(nextFirst);
@@ -36,13 +36,13 @@ public class ArrayDeque<T> implements Deque<T>{
         items = a;
     }
 
-    private void checkDiv(T[] items) {
+    protected void checkDiv(T[] items) {
         if ((size >= 16) && (size < items.length / 4)) {
             resize(items.length / 4);
         }
     }
 
-    private void checkMu(T[] items) {
+    protected void checkMu(T[] items) {
         if(size == items.length) {
             resize(size * 2);
         }
@@ -64,11 +64,6 @@ public class ArrayDeque<T> implements Deque<T>{
         nextLast = addOne(nextLast);
         size ++;
 
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return size == 0;
     }
 
     @Override
