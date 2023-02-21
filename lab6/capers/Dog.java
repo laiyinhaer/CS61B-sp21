@@ -63,7 +63,7 @@ public class Dog implements Serializable { // TODO
      */
     public void saveDog() {
         // TODO (hint: don't forget dog names are unique)
-        File f = join(DOGS_FOLDER, "name");
+        File f = join(DOGS_FOLDER, name);
         try {
             f.createNewFile();
         } catch (IOException e) {
