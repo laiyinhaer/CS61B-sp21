@@ -1,8 +1,4 @@
 package bstmap;
-
-import net.sf.saxon.functions.Compare;
-
-import java.security.Key;
 import java.util.Iterator;
 import java.util.Set;
 
