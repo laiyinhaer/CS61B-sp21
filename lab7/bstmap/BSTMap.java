@@ -112,7 +112,7 @@ public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V>{
         throw new UnsupportedOperationException();
     }
 
-    private void printInOrder() {
+    public void printInOrder() {
         printInOrder(root);
     }
     private void printInOrder(BSTNode x) {
