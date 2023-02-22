@@ -2,10 +2,10 @@ package bstmap;
 import java.util.Iterator;
 import java.util.Set;
 
-public class BSTMap<K extends Comparable, V> implements Map61B<K, V>{
+public class BSTMap<K extends Comparable<K>, V> implements Map61B<K, V>{
     private BSTNode root;
 
-    public class BSTNode {
+    private class BSTNode {
         private K key;//sorted by key
         private V value;// associated data
         private BSTNode left, right;//subtrees
@@ -41,7 +41,7 @@ public class BSTMap<K extends Comparable, V> implements Map61B<K, V>{
         return  res == null ? null : res.value;
     }
 
-    public BSTNode get(BSTNode x, K key) {// if the key exist, return the node.Otherwise return null
+    private BSTNode get(BSTNode x, K key) {// if the key exist, return the node.Otherwise return null
         if (key == null) {
             throw new IllegalArgumentException("argument to get() is null");
         }
@@ -72,7 +72,7 @@ public class BSTMap<K extends Comparable, V> implements Map61B<K, V>{
         root  = put(root, key, value);
     }
 
-    public BSTNode put(BSTNode x, K key, V value) {
+    private BSTNode put(BSTNode x, K key, V value) {
         if (key == null) {
             throw new IllegalArgumentException("argument to put() is null");
         }
@@ -111,4 +111,17 @@ public class BSTMap<K extends Comparable, V> implements Map61B<K, V>{
     public Iterator<K> iterator() {
         throw new UnsupportedOperationException();
     }
+
+    public void printInOrder() {
+        printInOrder(root);
+    }
+    public void printInOrder(BSTNode x) {
+        if (x == null) {
+            return;
+        }
+        printInOrder(x.left);
+        System.out.println(x.key.toString() + "->" + x.value.toString());
+        printInOrder(x.right);
+    }
+
 }
